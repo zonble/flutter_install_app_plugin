@@ -1,4 +1,4 @@
-group 'flutterinstallappplugin.zonble.net.flutterinstallappplugin'
+group 'net.zonble.flutterinstallappplugin'
 version '1.0-SNAPSHOT'
 
 buildscript {

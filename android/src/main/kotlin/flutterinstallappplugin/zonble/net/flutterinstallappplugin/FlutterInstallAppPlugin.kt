@@ -1,4 +1,4 @@
-package flutterinstallappplugin.zonble.net.flutterinstallappplugin
+package net.zonble.flutterinstallappplugin
 
 import android.app.Activity
 import android.content.Intent

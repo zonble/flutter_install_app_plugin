@@ -1,8 +1,8 @@
 name: flutter_install_app_plugin
 description: A Flutter plug-in helps to install iOS and Android apps.
 version: 0.0.1
-author:
-homepage:
+author: zonble <zonble@gmail.com>
+homepage: https://github.com/zonble/flutter_install_app_plugin
 
 environment:
   sdk: ">=2.0.0-dev.68.0 <3.0.0"
@@ -17,7 +17,7 @@ dependencies:
 # The following section is specific to Flutter.
 flutter:
   plugin:
-    androidPackage: flutterinstallappplugin.zonble.net.flutterinstallappplugin
+    androidPackage: net.zonble.flutterinstallappplugin
     pluginClass: FlutterInstallAppPlugin
 
   # To add assets to your plugin package, add an assets section, like this:

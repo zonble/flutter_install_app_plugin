@@ -20,4 +20,6 @@ Then call the plug-in.
     FlutterInstallAppPlugin.installApp(app);
 ```
 
+On iOS, the plug-in calls [SKStoreProductViewController](https://developer.apple.com/documentation/storekit/skstoreproductviewcontroller), while it creates an activity to open a "market://" URL on Android.
+
 That's all. Enjoy!

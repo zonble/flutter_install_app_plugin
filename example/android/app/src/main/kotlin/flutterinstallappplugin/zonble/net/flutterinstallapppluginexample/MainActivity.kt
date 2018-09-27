@@ -1,4 +1,4 @@
-package flutterinstallappplugin.zonble.net.flutterinstallapppluginexample
+package net.zonble.flutterinstallapppluginexample
 
 import android.os.Bundle
 
