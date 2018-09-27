@@ -2,9 +2,22 @@
 
 A Flutter plug-in helps to install iOS and Android apps.
 
-## Getting Started
+## Usage
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+It is not uncommon that you may want to ask a user to install another app within your app. What you need to do here is to prepare a set of iOS app ID on App Store, and Android package name.
 
-For help on editing plugin code, view the [documentation](https://flutter.io/developing-packages/#edit-plugin-package).
+For example, if you want to lead your customers to install [KKBOX](https://www.kkbox.com/), you need to create an app set like:
+
+```dart
+    var app = AppSet();
+    app.iosAppId = 300915900;
+    app.androidPackageName = 'com.skysoft.kkbox.android';
+```
+
+Then call the plug-in.
+
+```dart
+    FlutterInstallAppPlugin.installApp(app);
+```
+
+That's all. Enjoy!
