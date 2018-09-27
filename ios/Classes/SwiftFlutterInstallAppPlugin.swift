@@ -1,27 +1,28 @@
 import Flutter
 import UIKit
 import StoreKit
-    
-public class SwiftFlutterInstallAppPlugin: NSObject, FlutterPlugin {
-  public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "flutter_install_app_plugin", binaryMessenger: registrar.messenger())
-    let instance = SwiftFlutterInstallAppPlugin()
-    registrar.addMethodCallDelegate(instance, channel: channel)
-  }
 
-  public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-	if call.method != "installApp" {
-		result(nil)
-		return
+public class SwiftFlutterInstallAppPlugin: NSObject, FlutterPlugin {
+	public static func register(with registrar: FlutterPluginRegistrar) {
+		let channel = FlutterMethodChannel(name: "flutter_install_app_plugin", binaryMessenger: registrar.messenger())
+		let instance = SwiftFlutterInstallAppPlugin()
+		registrar.addMethodCallDelegate(instance, channel: channel)
 	}
-	guard let arguments = call.arguments as? [Any],
-			let appID = arguments[0] as? Int else {
+
+	public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+		// Handles only the "installApp" method.
+		if call.method != "installApp" {
 			result(nil)
 			return
+		}
+		guard let arguments = call.arguments as? [Any],
+		      let appID = arguments[0] as? Int else {
+			result(nil)
+			return
+		}
+		install(appID: appID)
+		result(nil)
 	}
-	install(appID: appID)
-	result(nil)
-  }
 }
 
 extension SwiftFlutterInstallAppPlugin: SKStoreProductViewControllerDelegate {
@@ -36,7 +37,7 @@ extension SwiftFlutterInstallAppPlugin: SKStoreProductViewControllerDelegate {
 			SKStoreProductParameterITunesItemIdentifier: appID,
 			SKStoreProductParameterAffiliateToken: "",
 			SKStoreProductParameterCampaignToken: ""
-			] as [String: Any]
+		] as [String: Any]
 		storeViewController.loadProduct(withParameters: params, completionBlock: nil)
 		storeViewController.delegate = self
 		if root.presentedViewController != nil {
@@ -47,7 +48,6 @@ extension SwiftFlutterInstallAppPlugin: SKStoreProductViewControllerDelegate {
 			root.present(storeViewController, animated: true, completion: nil)
 		}
 	}
-
 
 	public func productViewControllerDidFinish(_ viewController: SKStoreProductViewController) {
 		viewController.dismiss(animated: true, completion: nil)
