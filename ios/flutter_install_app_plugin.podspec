@@ -8,9 +8,9 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 A Flutter plug-in helps to install iOS and Android apps.
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'https://github.com/zonble/flutter_install_app_plugin'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'zonble' => 'zonble@gmail.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.public_header_files = 'Classes/**/*.h'
