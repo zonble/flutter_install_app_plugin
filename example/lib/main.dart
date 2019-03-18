@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/services.dart';
 import 'package:flutter_install_app_plugin/flutter_install_app_plugin.dart';
 
 void main() => runApp(new MyApp());
