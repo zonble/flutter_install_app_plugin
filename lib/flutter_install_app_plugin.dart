@@ -12,6 +12,9 @@ class AppSet {
 }
 
 /// The plugin that helps to guide users to install apps.
+///
+/// To use the plugin, create an instance of [AppSet] and then pass it to
+/// [FlutterInstallAppPlugin.installApp].
 class FlutterInstallAppPlugin {
   static const MethodChannel _channel =
       const MethodChannel('flutter_install_app_plugin');
