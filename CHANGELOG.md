@@ -1,3 +1,7 @@
+## 0.2.0
+
+- Upgrade build settings for Android.
+
 ## 0.1.2
 
 - Upgrade build settings for Android.
