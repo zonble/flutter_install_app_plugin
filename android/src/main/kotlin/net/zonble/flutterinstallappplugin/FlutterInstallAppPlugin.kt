@@ -13,8 +13,11 @@ class FlutterInstallAppPlugin(private val activity: Activity) : MethodCallHandle
     companion object {
         @JvmStatic
         fun registerWith(registrar: Registrar) {
-            val channel = MethodChannel(registrar.messenger(), "flutter_install_app_plugin")
-            channel.setMethodCallHandler(FlutterInstallAppPlugin(registrar.activity()))
+            val activity = registrar.activity()
+            if (activity != null) {
+                val channel = MethodChannel(registrar.messenger(), "flutter_install_app_plugin")
+                channel.setMethodCallHandler(FlutterInstallAppPlugin(activity))
+            }
         }
     }
 
