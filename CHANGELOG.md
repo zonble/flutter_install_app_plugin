@@ -1,3 +1,7 @@
+## 0.2.1
+
+- Upgrade to Android X.
+
 ## 0.2.0
 
 - Upgrade build settings for Android.
