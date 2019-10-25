@@ -17,5 +17,6 @@ A Flutter plug-in helps to install iOS and Android apps.
   s.dependency 'Flutter'
   
   s.ios.deployment_target = '8.0'
+  s.swift_version = '5.1'
 end
 
