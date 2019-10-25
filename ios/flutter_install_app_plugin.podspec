@@ -18,5 +18,6 @@ A Flutter plug-in helps to install iOS and Android apps.
   
   s.ios.deployment_target = '8.0'
   s.swift_version = '5.1'
+  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
 end
 
