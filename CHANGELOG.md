@@ -1,3 +1,8 @@
+## 0.3.0
+
+- iOS: Bump xcode project version
+- iOS: Define clang module, allow static builds
+
 ## 0.2.1
 
 - Upgrade to Android X.

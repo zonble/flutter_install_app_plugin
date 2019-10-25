@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_install_app_plugin'
-  s.version          = '0.0.1'
+  s.version          = '0.3.0'
   s.summary          = 'A Flutter plug-in helps to install iOS and Android apps.'
   s.description      = <<-DESC
 A Flutter plug-in helps to install iOS and Android apps.
@@ -17,5 +17,7 @@ A Flutter plug-in helps to install iOS and Android apps.
   s.dependency 'Flutter'
   
   s.ios.deployment_target = '8.0'
+  s.swift_version = '5.1'
+  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
 end
 
