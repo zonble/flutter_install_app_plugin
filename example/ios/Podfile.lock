@@ -1,6 +1,6 @@
 PODS:
   - Flutter (1.0.0)
-  - flutter_install_app_plugin (0.0.1):
+  - flutter_install_app_plugin (0.3.0):
     - Flutter
 
 DEPENDENCIES:
@@ -15,7 +15,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  flutter_install_app_plugin: 56e29ad9db09d6751db712e4f9545ee125eed7f7
+  flutter_install_app_plugin: c0d9c39b9c950378818cbc1131c9fe7a5f9423b2
 
 PODFILE CHECKSUM: 66b7b23a9942ad761ed4913fad82be13829bec7c
 

@@ -1,3 +1,4 @@
+
 #import "FlutterInstallAppPlugin.h"
 
 #if __has_include(<flutter_install_app_plugin/flutter_install_app_plugin-Swift.h>)

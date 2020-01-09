@@ -9,9 +9,9 @@ It is not uncommon that you may want to ask a user to install another app within
 For example, if you want to lead your customers to install [KKBOX](https://www.kkbox.com/), you need to create an app set like:
 
 ```dart
-    var app = AppSet();
-    app.iosAppId = 300915900;
-    app.androidPackageName = 'com.skysoft.kkbox.android';
+    var app = AppSet()
+    ..iosAppId = 300915900
+    ..androidPackageName = 'com.skysoft.kkbox.android';
 ```
 
 Then call the plug-in.
