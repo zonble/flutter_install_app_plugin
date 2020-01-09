@@ -1,3 +1,13 @@
+## 0.4.0
+
+- Adds new parameters for iOS
+  - iosIapId
+  - iosAffiliateToken
+  - iosCampaignToken
+  - iosAdvertisingPartnerToken
+  - iosProviderToken
+- Updates the example for Android
+
 ## 0.3.0
 
 - iOS: Bump xcode project version
