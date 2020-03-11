@@ -30,6 +30,8 @@ enum SwiftFlutterInstallAppPluginError: String, Error, LocalizedError {
 }
 
 public class SwiftFlutterInstallAppPlugin: NSObject, FlutterPlugin {
+	private var productViewController: SKStoreProductViewController?
+
 	public static func register(with registrar: FlutterPluginRegistrar) {
 		let channel = FlutterMethodChannel(name: "flutter_install_app_plugin", binaryMessenger: registrar.messenger())
 		let instance = SwiftFlutterInstallAppPlugin()
@@ -37,11 +39,17 @@ public class SwiftFlutterInstallAppPlugin: NSObject, FlutterPlugin {
 	}
 
 	public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-		// Handles only the "installApp" method.
-		if call.method != "installApp" {
+		if call.method == "installApp" {
+			handleInstallApp(call, result: result)
+		} else if call.method == "closeProductViewController" {
+			handleCloseProductViewController()
+			result(nil)
+		} else {
 			result(SwiftFlutterInstallAppPluginError.invalidMethod.flutterError)
-			return
 		}
+	}
+
+	private func handleInstallApp(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
 		guard let string = call.arguments as? String,
 			let data = string.data(using: .utf8) else {
 				result(SwiftFlutterInstallAppPluginError.invalidJson.flutterError)
@@ -57,6 +65,11 @@ public class SwiftFlutterInstallAppPlugin: NSObject, FlutterPlugin {
 			result(flutterError)
 		}
 	}
+
+	private func handleCloseProductViewController() {
+		self.productViewController?.dismiss(animated: true, completion: nil)
+		self.productViewController = nil
+	}
 }
 
 extension SwiftFlutterInstallAppPlugin: SKStoreProductViewControllerDelegate {
@@ -65,7 +78,8 @@ extension SwiftFlutterInstallAppPlugin: SKStoreProductViewControllerDelegate {
 			return
 		}
 
-		let storeViewController: SKStoreProductViewController = SKStoreProductViewController()
+		self.productViewController = SKStoreProductViewController()
+
 		// https://affiliate.itunes.apple.com/resources/documentation/getting-started/
 		var params: [String: Any] = [
 			SKStoreProductParameterITunesItemIdentifier: config.iosAppId,
@@ -88,19 +102,19 @@ extension SwiftFlutterInstallAppPlugin: SKStoreProductViewControllerDelegate {
 			}
 		}
 
-		storeViewController.loadProduct(withParameters: params, completionBlock: nil)
-		storeViewController.delegate = self
+		self.productViewController?.loadProduct(withParameters: params, completionBlock: nil)
+		self.productViewController?.delegate = self
 		if root.presentedViewController != nil {
 			root.dismiss(animated: true) {
-				root.present(storeViewController, animated: true, completion: nil)
+				root.present(self.productViewController!, animated: true, completion: nil)
 			}
 		} else {
-			root.present(storeViewController, animated: true, completion: nil)
+			root.present(self.productViewController!, animated: true, completion: nil)
 		}
 	}
 
 	public func productViewControllerDidFinish(_ viewController: SKStoreProductViewController) {
 		viewController.dismiss(animated: true, completion: nil)
+		self.productViewController = nil
 	}
-
 }

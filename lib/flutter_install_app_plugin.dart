@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 
@@ -71,5 +72,14 @@ class FlutterInstallAppPlugin {
     var map = app.toJson();
     var string = json.encode(map);
     await _channel.invokeMethod('installApp', string);
+  }
+
+  /// iOS Only: Closes the SKStoreProductViewController that was opened previously.
+  static Future<void> closeProductViewController() async {
+    if (!Platform.isIOS) {
+      return;
+    }
+
+    await _channel.invokeMethod<void>('closeProductViewController');
   }
 }
