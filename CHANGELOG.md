@@ -1,3 +1,7 @@
+## 0.4.1
+
+- Adds iOS only `closeProductViewController` method
+
 ## 0.4.0
 
 - Adds new parameters for iOS
