@@ -25,9 +25,9 @@ class _MyAppState extends State<MyApp> {
             child: new RaisedButton(
           color: Theme.of(context).primaryColor,
           onPressed: () {
-            var app = AppSet();
-            app.iosAppId = 300915900;
-            app.androidPackageName = 'com.skysoft.kkbox.android';
+            var app = AppSet()
+              ..iosAppId = 300915900
+              ..androidPackageName = 'com.skysoft.kkbox.android';
             FlutterInstallAppPlugin.installApp(app);
           },
           child: Text(

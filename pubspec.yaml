@@ -12,5 +12,10 @@ dependencies:
     sdk: flutter
 flutter:
   plugin:
-    androidPackage: net.zonble.flutterinstallappplugin
-    pluginClass: FlutterInstallAppPlugin
+    platforms:
+      android:
+        package: net.zonble.flutterinstallappplugin
+        pluginClass: FlutterInstallAppPlugin
+      ios:
+        pluginClass: FlutterInstallAppPlugin
+
