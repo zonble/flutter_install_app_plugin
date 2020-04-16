@@ -1,3 +1,7 @@
+## 0.4.1
+
+- Supports Flutter Web
+
 ## 0.4.0
 
 - Adds new parameters for iOS
