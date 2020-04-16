@@ -48,6 +48,9 @@ class AppSet {
   /// The Android package name.
   String androidPackageName;
 
+  /// The URL of the web page for Flutter web.
+  String url;
+
   Map toJson() => {
         'iosAppId': iosAppId,
         'iosAffiliateToken': iosAffiliateToken,
@@ -55,6 +58,7 @@ class AppSet {
         'iosAdvertisingPartnerToken': iosAdvertisingPartnerToken,
         'iosProviderToken': iosProviderToken,
         'androidPackageName': androidPackageName,
+        'url': url,
       };
 }
 

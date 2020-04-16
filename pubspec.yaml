@@ -10,6 +10,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  platform_detect: ^1.4.0
+
 flutter:
   plugin:
     platforms:
@@ -18,4 +22,6 @@ flutter:
         pluginClass: FlutterInstallAppPlugin
       ios:
         pluginClass: FlutterInstallAppPlugin
-
+      web:
+        pluginClass: FlutterInstallAppPlugin
+        fileName: flutter_install_app_web.dart
