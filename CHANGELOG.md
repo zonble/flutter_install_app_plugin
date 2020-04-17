@@ -1,3 +1,7 @@
+## 0.4.2
+
+- Adds iOS only `closeProductViewController` method
+
 ## 0.4.1
 
 - Supports Flutter Web

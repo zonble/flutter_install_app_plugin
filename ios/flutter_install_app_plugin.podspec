@@ -3,7 +3,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_install_app_plugin'
-  s.version          = '0.3.0'
+  s.version          = '0.4.1'
   s.summary          = 'A Flutter plug-in helps to install iOS and Android apps.'
   s.description      = <<-DESC
 A Flutter plug-in helps to install iOS and Android apps.
