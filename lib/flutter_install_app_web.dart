@@ -17,13 +17,11 @@ class FlutterInstallAppPlugin {
   Future<dynamic> handleMethodCall(MethodCall call) async {
     switch (call.method) {
       case 'installApp':
-        final String jsonString = call.arguments;
+        final String? jsonString = call.arguments;
         if (jsonString is String) {
           Map map = json.decode(jsonString);
           final url = _urlFromMap(map);
-          if (url != null) {
-            return _launch(url);
-          }
+          if (url != null) return _launch(url);
         }
         throw PlatformException(
           code: 'Invalid parameters',
@@ -37,14 +35,10 @@ class FlutterInstallAppPlugin {
     }
   }
 
-  bool _launch(String url) {
-    return html.window.open(url, '') != null;
-  }
+  _launch(String url) => html.window.open(url, '');
 
-  String _urlFromMap(Map map) {
-    if (map['url'] != null) {
-      return map['url'];
-    }
+  String? _urlFromMap(Map map) {
+    if (map['url'] != null) return map['url'];
     if (browser.isSafari && map['iosAppId'] != null) {
       return 'https://apps.apple.com/jp/app/' + map['iosAppId'];
     }

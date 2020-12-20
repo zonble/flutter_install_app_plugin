@@ -7,14 +7,14 @@ import 'package:flutter/services.dart';
 /// A container for iOS and Android App IDs.
 class AppSet {
   /// The ID on App Store.
-  int iosAppId;
+  int? iosAppId;
 
   /// Represents the product identifier for the promoted product you want the
   /// store to display at the top of the page.
   ///
   /// See
   /// https://developer.apple.com/documentation/storekit/skstoreproductparameterproductidentifier?language=objc
-  String iosIapId;
+  String? iosIapId;
 
   /// Your affiliate identifier.
   ///
@@ -23,7 +23,7 @@ class AppSet {
   ///
   /// See
   /// https://developer.apple.com/documentation/storekit/skstoreproductparameteraffiliatetoken
-  String iosAffiliateToken;
+  String? iosAffiliateToken;
 
   /// Represents an App Analytics campaign.
   ///
@@ -32,25 +32,25 @@ class AppSet {
   ///
   /// See
   /// https://developer.apple.com/documentation/storekit/skstoreproductparametercampaigntoken
-  String iosCampaignToken;
+  String? iosCampaignToken;
 
   /// Represents the advertising partner you wish to use.
   ///
   /// See
   /// https://developer.apple.com/documentation/storekit/skstoreproductparameteradvertisingpartnertoken
-  String iosAdvertisingPartnerToken;
+  String? iosAdvertisingPartnerToken;
 
   /// Represents the provider token for the developer that created the app.
   ///
   /// See
   /// https://developer.apple.com/documentation/storekit/skstoreproductparameterprovidertoken
-  String iosProviderToken;
+  String? iosProviderToken;
 
   /// The Android package name.
-  String androidPackageName;
+  String? androidPackageName;
 
   /// The URL of the web page for Flutter web.
-  String url;
+  String? url;
 
   Map toJson() => {
         'iosAppId': iosAppId,
@@ -80,10 +80,7 @@ class FlutterInstallAppPlugin {
 
   /// iOS Only: Closes the SKStoreProductViewController that was opened previously.
   static Future<void> closeProductViewController() async {
-    if (!Platform.isIOS) {
-      return;
-    }
-
+    if (!Platform.isIOS) return;
     await _channel.invokeMethod<void>('closeProductViewController');
   }
 }
