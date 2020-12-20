@@ -1,3 +1,7 @@
+## 0.4.2-nullsafety.0
+
+- Supports null safety.
+
 ## 0.4.2
 
 - Adds iOS only `closeProductViewController` method
