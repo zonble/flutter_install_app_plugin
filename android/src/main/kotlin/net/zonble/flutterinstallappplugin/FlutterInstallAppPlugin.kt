@@ -1,45 +1,59 @@
 package net.zonble.flutterinstallappplugin
 
 import android.app.Activity
-import android.content.Intent
-import android.net.Uri
-import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
-import io.flutter.plugin.common.MethodCall
+import io.flutter.embedding.engine.plugins.FlutterPlugin
+import io.flutter.embedding.engine.plugins.activity.ActivityAware
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
+import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry.Registrar
 
-class FlutterInstallAppPlugin(private val activity: Activity) : MethodCallHandler {
+class FlutterInstallAppPlugin : FlutterPlugin, ActivityAware {
+    private var channel: MethodChannel? = null
+    private var methodCallHandler: MethodCallHandlerImpl? = null
+
     companion object {
         @JvmStatic
         fun registerWith(registrar: Registrar) {
+            val plugin = FlutterInstallAppPlugin()
+
+            plugin.onAttachedToEngine(registrar.messenger())
+
             val activity = registrar.activity()
             if (activity != null) {
-                val channel = MethodChannel(registrar.messenger(), "flutter_install_app_plugin")
-                channel.setMethodCallHandler(FlutterInstallAppPlugin(activity))
+                plugin.onActivityChanged(activity)
             }
         }
     }
 
-    override fun onMethodCall(call: MethodCall, result: Result) {
-        when (call.method) {
-            "installApp" -> {
-                val args = call.arguments as? String
-                args?.let {
-                    val appConfig = Gson().fromJson(args, AppConfig::class.java)
-                    val appPackageName = appConfig.androidPackageName
-                    try {
-                        activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$appPackageName")))
-                    } catch (anfe: android.content.ActivityNotFoundException) {
-                        activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$appPackageName")))
-                    }
-                } ?: result.error("Invalid format", null, null)
-                result.success(null)
-            }
-            else -> result.notImplemented()
-        }
+    override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {
+        onAttachedToEngine(binding.binaryMessenger)
+    }
+
+    override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
+        channel?.setMethodCallHandler(null)
+        channel = null
+    }
+
+    override fun onAttachedToActivity(binding: ActivityPluginBinding) =
+            onActivityChanged(binding.activity)
+
+    override fun onDetachedFromActivityForConfigChanges() = onActivityChanged(null)
+
+    override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) =
+            onActivityChanged(binding.activity)
+
+    override fun onDetachedFromActivity() = onActivityChanged(null)
+
+    fun onAttachedToEngine(messenger: BinaryMessenger) {
+        channel = MethodChannel(messenger, "flutter_install_app_plugin")
+        methodCallHandler = MethodCallHandlerImpl()
+        channel?.setMethodCallHandler(methodCallHandler)
+    }
+
+    fun onActivityChanged(activity: Activity?) {
+        methodCallHandler?.activity = activity
     }
 }
 
