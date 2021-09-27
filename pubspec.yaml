@@ -1,10 +1,10 @@
 name: flutter_install_app_plugin
 description: A Flutter plug-in helps to install other iOS and Android apps on AppStore, Google Play or other stores.
-version: 0.4.2-nullsafety.0
+version: 0.4.3
 homepage: https://github.com/zonble/flutter_install_app_plugin
 
 environment:
-  sdk: '>=2.12.0-133.2.beta <3.0.0'
+  sdk: '>=2.12.0 <3.0.0'
   flutter: ">=1.12.0 <2.0.0"
 
 dependencies:
