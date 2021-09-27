@@ -1,3 +1,7 @@
+## next
+
+- Migrate Android embedding to V2
+
 ## 0.4.2-nullsafety.0
 
 - Supports null safety.
