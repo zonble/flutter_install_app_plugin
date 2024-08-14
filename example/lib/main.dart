@@ -16,26 +16,21 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      home: new Scaffold(
-        appBar: new AppBar(
-          title: const Text('Plugin example app'),
-        ),
-        body: new Center(
-            child: new RaisedButton(
-          color: Theme.of(context).primaryColor,
-          onPressed: () {
-            var app = AppSet()
-              ..iosAppId = 300915900
-              ..androidPackageName = 'com.skysoft.kkbox.android';
-            FlutterInstallAppPlugin.installApp(app);
-          },
-          child: Text(
-            'Install App',
-            style: TextStyle(color: Colors.white),
-          ),
-        )),
-      ),
-    );
+    return MaterialApp(
+        home: Scaffold(
+      appBar: AppBar(title: const Text('Plugin example app')),
+      body: Center(
+          child: ElevatedButton(
+              onPressed: () {
+                var app = AppSet()
+                  ..iosAppId = 300915900
+                  ..androidPackageName = 'com.skysoft.kkbox.android';
+                FlutterInstallAppPlugin.installApp(app);
+              },
+              child: Text(
+                'Install App',
+                style: TextStyle(color: Colors.white),
+              ))),
+    ));
   }
 }
