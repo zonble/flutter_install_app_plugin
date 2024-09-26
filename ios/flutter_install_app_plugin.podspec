@@ -1,23 +1,29 @@
 #
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
+# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
+# Run `pod lib lint flutter_install_app_plugin.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_install_app_plugin'
-  s.version          = '0.4.1'
-  s.summary          = 'A Flutter plug-in helps to install iOS and Android apps.'
+  s.version          = '0.0.1'
+  s.summary          = 'A new Flutter plugin project.'
   s.description      = <<-DESC
-A Flutter plug-in helps to install iOS and Android apps.
+A new Flutter plugin project.
                        DESC
-  s.homepage         = 'https://github.com/zonble/flutter_install_app_plugin'
+  s.homepage         = 'http://example.com'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'zonble' => 'zonble@gmail.com' }
+  s.author           = { 'Your Company' => 'email@example.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
-  s.public_header_files = 'Classes/**/*.h'
+  s.source_files = 'flutter_install_app_plugin/Sources/flutter_install_app_plugin/**/*'
   s.dependency 'Flutter'
-  
-  s.ios.deployment_target = '8.0'
-  s.swift_version = '5.1'
-  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
-end
+  s.platform = :ios, '12.0'
 
+  # Flutter.framework does not contain a i386 slice.
+  s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
+  s.swift_version = '5.0'
+
+  # If your plugin requires a privacy manifest, for example if it uses any
+  # required reason APIs, update the PrivacyInfo.xcprivacy file to describe your
+  # plugin's privacy impact, and then uncomment this line. For more information,
+  # see https://developer.apple.com/documentation/bundleresources/privacy_manifest_files
+  # s.resource_bundles = {'flutter_install_app_plugin_privacy' => ['flutter_install_app_plugin/Sources/flutter_install_app_plugin/PrivacyInfo.xcprivacy']}
+end
