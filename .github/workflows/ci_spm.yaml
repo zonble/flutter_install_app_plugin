@@ -24,12 +24,12 @@ jobs:
       - name: Install dependencies
         run: flutter packages get
         working-directory: example
-      - name: Cleans up macOS project
+      - name: Cleans up iOS project
         run: |
           pod deintegrate
           echo "#include \"Generated.xcconfig\""\n" > Flutter/Debug.xcconfig
           echo "#include \"Generated.xcconfig\""\n" > Flutter/Release.xcconfig
-        working-directory: example/macos
-      - name: Build macOS
-        run: flutter build macos
+        working-directory: example/ios
+      - name: Build iOS
+        run: flutter build ios
         working-directory: example
