@@ -33,5 +33,5 @@ jobs:
           cat Flutter/Release.xcconfig
         working-directory: example/ios
       - name: Build iOS
-        run: flutter build ios
+        run: flutter build ios --debug --no-codesign --simulator
         working-directory: example
