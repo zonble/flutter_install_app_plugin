@@ -30,7 +30,7 @@ android {
         namespace 'net.zonble.flutterinstallappplugin'
     }
 
-    compileSdkVersion 28
+    compileSdkVersion 34
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
