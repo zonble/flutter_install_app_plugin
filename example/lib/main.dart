@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_install_app_plugin/flutter_install_app_plugin.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
-  _MyAppState createState() => new _MyAppState();
+  State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
@@ -27,7 +29,7 @@ class _MyAppState extends State<MyApp> {
                   ..androidPackageName = 'com.skysoft.kkbox.android';
                 FlutterInstallAppPlugin.installApp(app);
               },
-              child: Text(
+              child: const Text(
                 'Install App',
                 style: TextStyle(color: Colors.white),
               ))),
