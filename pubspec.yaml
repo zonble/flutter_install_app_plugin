@@ -15,7 +15,7 @@ dependencies:
   platform_detect: ^2.1.0
 
 dev_dependencies:
-  flutter_lints: ">=1.0.0 <=5.0.0"
+  flutter_lints: any
   import_sorter: 4.6.0
   pubspec_dependency_sorter: 1.0.5
   flutter_test:
