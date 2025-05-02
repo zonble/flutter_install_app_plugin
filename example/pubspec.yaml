@@ -13,8 +13,8 @@ dependencies:
   cupertino_icons: any
   flutter_install_app_plugin:
     path: ../
+  # flutter_web_plugins: any
 
-  flutter_web_plugins: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
