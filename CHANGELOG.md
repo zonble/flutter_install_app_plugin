@@ -1,4 +1,8 @@
-## next
+## 0.7.0
+
+- Upgrade to Gradle 8.7.0
+
+## 0.6.0
 
 - Migrate Android embedding to V2
 

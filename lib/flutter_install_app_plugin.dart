@@ -78,7 +78,8 @@ class FlutterInstallAppPlugin {
     await _channel.invokeMethod('installApp', string);
   }
 
-  /// iOS Only: Closes the SKStoreProductViewController that was opened previously.
+  /// iOS Only: Closes the SKStoreProductViewController that was opened
+  /// previously.
   static Future<void> closeProductViewController() async {
     if (!Platform.isIOS) return;
     await _channel.invokeMethod<void>('closeProductViewController');

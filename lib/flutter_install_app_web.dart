@@ -40,11 +40,10 @@ class FlutterInstallAppPlugin {
   String? _urlFromMap(Map map) {
     if (map['url'] != null) return map['url'];
     if (browser.isSafari && map['iosAppId'] != null) {
-      return 'https://apps.apple.com/jp/app/' + map['iosAppId'];
+      return 'https://apps.apple.com/jp/app/${map['iosAppId']}';
     }
     if (map['androidPackageName'] != null) {
-      return 'https://play.google.com/store/apps/details?id=' +
-          map['androidPackageName'];
+      return 'https://play.google.com/store/apps/details?id=${map['androidPackageName']}';
     }
     return null;
   }
