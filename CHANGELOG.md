@@ -1,3 +1,7 @@
+# 0.8.0
+
+- Support Flutter 3.32.0
+
 ## 0.7.0
 
 - Upgrade to Gradle 8.7.0
